@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Song index{% endblock %}
+{%  block sliders %}{% endblock %}
+{% block body %}
+   
+   <div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		    <div class="default-heading" >
+						
+						<h2>ALL Products</h2>
+		    </div>
+	
+							
+            <div class="featured-element">
+					<div class="row">
+                        {% for song in songs %}
+							<div class="col-md-3 col-sm-3" >
+								<div class="featured-item ">
+                              
+									<div class="figure">
+										
+										<img class="img-responsive" width="200" height="200" src="{{ asset('uploads/images/' ~ song.coverimage) }} " alt="img" />
+										<a href="{{path("cart_add", {id: song.id})}}" class=class="btn btn-lg btn-theme" style="width:200px">
+											<i class="fa fa-shopping-cart"></i>&nbsp; Buy Now
+										</a>
+							  {# <a href="#" class="btn btn-lg btn-theme" style="width:200px" ><i class="fa fa-shopping-cart"></i>&nbsp; Buy Now</a> #}
+
+									</div>
+									
+									<div class="featured-item-info" >
+
+<table style="width:200px" >
+   <tr>
+    <td style="width:100px"> <h5 class="card-title" style="color:gray;" >Title :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.title }}</h5></td>
+   </tr>
+
+
+
+
+
+   
+
+
+  <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Price :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.length }}</h5></td> 
+  </tr>
+
+ 
+
+</table>
+										
+                                       
+                 
+									
+                                    </div>
+								</div>
+							</div>
+
+							
+           
+
+						{% endfor %}
+	
+          
+					</div>
+					
+<div class="navigation" style="margin:20px auto; width:300px;" >
+{{ knp_pagination_render(songs)}}
+
+</div>
+
+
+
+
+
+
+				</div>    
+
+	</div>
+   </div>  
+                   
+                  
+
+                   
+                     
+
+                     
+   
+
+{% endblock %}
+
+
